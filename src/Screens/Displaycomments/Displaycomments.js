@@ -19,7 +19,10 @@ class Displaycomments extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getComments(this.props.location.searchProps, {
+        var parameter = [];
+        parameter.push({ 'search': this.props.location.searchProps.searchData });
+        parameter.push({ 'urlparameter': this.props.match.params.id });
+        this.props.getComments(parameter, {
             SuccessCallback: res => {
                 let commentsData = getCommentResult(res.data)
                 this.setState({

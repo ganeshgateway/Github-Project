@@ -4,7 +4,7 @@ import { RestApiController } from '../../CommonApiController/ApiController';
 import { apiLoadingStart, apiLoadingStop } from '../Global/actions';
 
 export const getComments = (params, { SuccessCallback, FailureCallback }) => {
-    let endPoint = endPoints.Dashboard.endpoint + '/' + params.searchData.userName + '/' + params.searchData.repoName + '/pulls/2/comments';
+    let endPoint = endPoints.Dashboard.endpoint + '/' + params[0]['search'].userName + '/' + params[0]['search'].repoName + '/pulls/' + params[1]['urlparameter'] +'/comments';
     return (dispatch) => {
         dispatch(apiLoadingStart());
         dispatch({ type: types.COMMENTS_REQUEST_REQUEST })
